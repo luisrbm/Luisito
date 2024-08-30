@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Luisito</title>
+<title>Luisito - Duplo</title>
 <meta lang='pt-br'></head>
 <link rel='stylesheet' href='style.css'>
 <script src='script.js'></script>
@@ -13,7 +13,52 @@
     <a href='quadruplo.html'>Quádruplo</a>
   </navbar>
   
-<div class='jogo' id='jogos'>
+<div class='jogo' id='jogo1'>
+  <form name='linha1' id='linha1' >
+    <input type='text' id='11' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>  
+    <input type='text' id='12' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='13' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='14' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='15' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+  </form>
+  <form name='linha2' id='linha2'>
+    <input type='text' id='21' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='22' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='23' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='24' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='25' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+  </form>
+  <form name='linha3' id='linha3'>
+    <input type='text' id='31' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='32' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='33' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='34' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='35' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+  </form>
+  <form name='linha4' id='linha4'>
+    <input type='text' id='41' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='42' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='43' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='44' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='45' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+  </form>
+  <form name='linha5' id='linha5'>
+    <input type='text' id='51' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='52' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='53' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='54' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='55' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+  </form>
+  <form id='linha6'>
+    <input type='text' id='61' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='62' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='63' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='64' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+    <input type='text' id='65' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
+  </form>
+</div>
+<br>
+<div class='jogo' id='jogo2'>
   <form name='linha1' id='linha1' >
     <input type='text' id='11' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>  
     <input type='text' id='12' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength:1 pattern="[A-Za-z]{1}" onKeyPress=validarInput(this.id)>
