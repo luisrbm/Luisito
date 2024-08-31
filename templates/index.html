@@ -8,14 +8,14 @@
 
 <body>
   <nav>
-    <a href='index.html'>Simples</a>
-    <a href='duplo.html'>Duplo</a>
-    <a href='quadruplo.html'>Quádruplo</a>
+    <a href='/'>Simples</a>
+    <a href='/duplo'>Duplo</a>
+    <a href='/quadruplo'>Quádruplo</a>
   </nav>
   
 <div class='jogo' id='jogos'>
   <form name='linha1' id='linha1' >
-    <input type='text' id='11' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength=1 pattern="[A-Za-z]{1}" onkeydown=onkeydownvalidarInput(this.id)>
+    <input type='text' id='11' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength=1 pattern="[A-Za-z]{1}" onkeydown=validarInput(this.id)>
     <input type='text' id='12' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength=1 pattern="[A-Za-z]{1}" onkeydown=validarInput(this.id)>
     <input type='text' id='13' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength=1 pattern="[A-Za-z]{1}" onkeydown=validarInput(this.id)>
     <input type='text' id='14' class='letra' oninput="this.value = this.value.toUpperCase()" maxlength=1 pattern="[A-Za-z]{1}" onkeydown=validarInput(this.id)>

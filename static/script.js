@@ -16,9 +16,9 @@ function validarInput(id){
 }
 
 function limpar(){
-	for (let k= 1; k <= 6; k++){
+	for (let i= 1; i <= 6; i++){
 		for (let j = 1; j <= 5; j++){
-			var strId = k.toString() + j.toString();
+			var strId = i.toString() + j.toString();
 			document.getElementById(strId).value = "";
 		}
 	} 
