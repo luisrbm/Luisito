@@ -14,9 +14,7 @@ function iniciar() {
     forms[i].addEventListener('keydown', function(event) {
     	if (event.key === "Enter") {
 	    event.preventDefault();
-	    validarLinha(this);
-	}
-    	});
+	    validarLinha(this);}});
 
     const casinhas = [];
     for (let j = 0; j <= 4; j++) {
@@ -28,28 +26,30 @@ function iniciar() {
       casinhas[j].required = true;
       (i !== 0) ? casinhas[j].disabled = true: casinhas[j].disabled = false;
       casinhas[j].addEventListener('input', validarInput)
+      casinhas[j].addEventListener( 'keydown', function(event) {((event.keyCode == '37') && (j >= '1')) ? this.previousSibling.select() : (((event.keyCode == '39') && (j <= '3')) ? this.nextSibling.select() : ({}))});
       forms[i].appendChild(casinhas[j]);
-    }
-  }
-}
+     }
+   }
+ }
 
 function validarLinha(elemento) {
   const linhas = elemento.querySelectorAll('input');
   let linha = "";
   for (const i in linhas) {
     if (linhas[i].value === "") {
-    linhas[i].focus()};
+    linhas[i].select();} 
   }
+  
 }
 
 function validarInput() {
   const valor = document.getElementById(this.id);
   valor.value = valor.value.toUpperCase();
   if ((valor.value.length === 1) && (valor.id.split("")[1] !== '5')) {
-    valor.nextSibling.focus();
+    valor.nextSibling.select();
   }
   if ((valor.value.length === 0) && (valor.id.split("")[1] !== '1')) {
-    valor.previousSibling.focus();
+    valor.previousSibling.select();
   }
 }
 
