@@ -1,4 +1,6 @@
 const words = ['balao', 'carne', 'junto', 'xinga', 'pombo', 'trico', 'doula', 'minha', 'verao'];
+const daVez = words[Math.floor(Math.random()*words.length)];
+console.log(daVez)
 
 function iniciar() {
   document.getElementById('jogos');
@@ -26,7 +28,7 @@ function iniciar() {
       casinhas[j].required = true;
       (i !== 0) ? casinhas[j].disabled = true: casinhas[j].disabled = false;
       casinhas[j].addEventListener('input', validarInput)
-      casinhas[j].addEventListener( 'keydown', function(event) {((event.keyCode == '37') && (j >= '1')) ? this.previousSibling.select() : (((event.keyCode == '39') && (j <= '3')) ? this.nextSibling.select() : ({}))});
+      casinhas[j].addEventListener( 'keydown', function(event) {((event.keyCode == '37') && (j >= '1')) ? this.previousSibling.select() : (((event.keyCode == '39') && (j <= '3')) ?       this.nextSibling.select() : ({}))});
       forms[i].appendChild(casinhas[j]);
      }
    }
@@ -35,11 +37,49 @@ function iniciar() {
 function validarLinha(elemento) {
   const linhas = elemento.querySelectorAll('input');
   let linha = "";
-  for (const i in linhas) {
+  for (let i=0; i<linhas.length; i++) {
     if (linhas[i].value === "") {
-    linhas[i].select();} 
+      linhas[i].select();
+      return;}
+    linha += linhas[i].value;
+  };
+  if (linha.length == 5){
+    if (words.includes(linha.toLowerCase())) {
+      const proxLinha = elemento.nextElementSibling.querySelectorAll('input');
+      verificarPalavra(elemento);
+      for (let i=0; i < linhas.length; i++) {
+        linhas[i].disabled = true;
+        proxLinha[i].disabled = false;
+        }
+      proxLinha[0].select();
+    } else {
+      alert('Palavra inválida!');
+    }
   }
-  
+}
+
+function verificarPalavra(elemento){
+  const linhas = elemento.querySelectorAll('input');
+  let lin_arr = [];
+  const daVez_arr = daVez.split('');
+
+  for (let i=0; i < linhas.length; i++){
+    lin_arr.push(linhas[i].value);
+  }
+
+  for (let i=0; i < lin_arr.length; i++){
+    if (daVez[i] === lin_arr[i]){
+      linhas[i].id = 'letra_lugar_certo';
+      console.log(linhas[i].id);
+      } else if (daVez_arr.includes(lin_arr[i])) {
+        linhas[i].id = 'letra_lugar_errado';
+      console.log(linhas[i].id);
+        }
+      else {
+        linhas[i].id = "letra_errada";
+        console.log(linhas[i].id);
+      } 
+   }
 }
 
 function validarInput() {
