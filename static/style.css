@@ -30,8 +30,8 @@
   text-align: center;
   border: 2px solid #2980b9;
   caret-color: transparent;
-  background-color: ##20DD20;
- };
+  background-color: #20DD20;
+ }
  
  .letra_lugar_errado {
   color: inherit;
@@ -46,9 +46,24 @@
   text-align: center;
   border: 2px solid #2980b9;
   caret-color: transparent;
-  background-color: ##DDDD20;
- };
+  background-color: #999920;
+ }
 
+.letra_errada {
+  color: inherit;
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  margin-bottom: 7px;
+  border-radius: 6px;
+  font-family: 'Gill Sans', sans-serif;
+  font-weight: bolder;
+  font-size: 30px;
+  text-align: center;
+  border: 2px solid #2980b9;
+  caret-color: transparent;
+  background-color: #999999;
+}
 
 .formContainer {
   display: flex;

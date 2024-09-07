@@ -28,7 +28,7 @@ function iniciar() {
       casinhas[j].required = true;
       (i !== 0) ? casinhas[j].disabled = true: casinhas[j].disabled = false;
       casinhas[j].addEventListener('input', validarInput)
-      casinhas[j].addEventListener( 'keydown', function(event) {((event.keyCode == '37') && (j >= '1')) ? this.previousSibling.select() : (((event.keyCode == '39') && (j <= '3')) ?       this.nextSibling.select() : ({}))});
+      casinhas[j].addEventListener( 'keydown', function(event) {((event.keyCode == '37') && (j >= '1')) ? this.previousSibling.select() : (((event.keyCode == '39') && (j <= '3')) ? this.nextSibling.select() : ({}))});
       forms[i].appendChild(casinhas[j]);
      }
    }
@@ -42,21 +42,28 @@ function validarLinha(elemento) {
       linhas[i].select();
       return;}
     linha += linhas[i].value;
-  };
+  }
   if (linha.length == 5){
     if (words.includes(linha.toLowerCase())) {
       const proxLinha = elemento.nextElementSibling.querySelectorAll('input');
-      verificarPalavra(elemento);
-      for (let i=0; i < linhas.length; i++) {
+      let x = verificarPalavra(elemento);
+      if (x !== true){
+		for (let i=0; i < linhas.length; i++) {
         linhas[i].disabled = true;
         proxLinha[i].disabled = false;
         }
-      proxLinha[0].select();
+        proxLinha[0].select();
+      } else {
+        for (let i=0; i < linhas.length; i++) {
+        linhas[i].disabled = true;
+        }
+      }
     } else {
       alert('Palavra inválida!');
+      }
     }
-  }
 }
+
 
 function verificarPalavra(elemento){
   const linhas = elemento.querySelectorAll('input');
@@ -64,22 +71,27 @@ function verificarPalavra(elemento){
   const daVez_arr = daVez.split('');
 
   for (let i=0; i < linhas.length; i++){
-    lin_arr.push(linhas[i].value);
+    lin_arr.push(linhas[i].value.toLowerCase());
   }
 
   for (let i=0; i < lin_arr.length; i++){
-    if (daVez[i] === lin_arr[i]){
-      linhas[i].id = 'letra_lugar_certo';
-      console.log(linhas[i].id);
+		if (daVez[i] === lin_arr[i]){
+		linhas[i].className = 'letra_lugar_certo';
       } else if (daVez_arr.includes(lin_arr[i])) {
-        linhas[i].id = 'letra_lugar_errado';
-      console.log(linhas[i].id);
-        }
-      else {
-        linhas[i].id = "letra_errada";
-        console.log(linhas[i].id);
-      } 
+		linhas[i].className = 'letra_lugar_errado';
+        } else {
+        linhas[i].className = "letra_errada";
+        console.log(linhas[i].className);
+      }
    }
+	if (daVez_arr.join('') == lin_arr.join('')) {
+      for (let i in linhas){
+        debugger
+        i.animate({transform:['rotate(0deg', 'rotate(360deg)']}, 200);
+        debugger;
+      }
+	  return true;
+  }
 }
 
 function validarInput() {
