@@ -32,6 +32,7 @@ function iniciar() {
       forms[i].appendChild(casinhas[j]);
      }
    }
+  document.getElementById('jogos').animate([{'opacity':0},{'opacity':1}], 1500)
  }
 
 function validarLinha(elemento) {
@@ -65,30 +66,38 @@ function validarLinha(elemento) {
 }
 
 
-function verificarPalavra(elemento){
+function verificarPalavra(elemento) {
   const linhas = elemento.querySelectorAll('input');
   let lin_arr = [];
   const daVez_arr = daVez.split('');
 
-  for (let i=0; i < linhas.length; i++){
+  for (let i = 0; i < linhas.length; i++) {
     lin_arr.push(linhas[i].value.toLowerCase());
   }
 
+  elemento.animate([{'opacity': 1}, {'opacity': 0}], 300);
+
   for (let i=0; i < lin_arr.length; i++){
-		if (daVez[i] === lin_arr[i]){
-		linhas[i].className = 'letra_lugar_certo';
+    if (daVez[i] === lin_arr[i]){
+      linhas[i].className = 'letra_lugar_certo';
       } else if (daVez_arr.includes(lin_arr[i])) {
 		linhas[i].className = 'letra_lugar_errado';
         } else {
         linhas[i].className = "letra_errada";
-        console.log(linhas[i].className);
       }
-   }
+  }
+
+    elemento.animate([{'opacity':0}, {'opacity': 1}], 300);
+
 	if (daVez_arr.join('') == lin_arr.join('')) {
       for (let i in linhas){
-        debugger
-        i.animate({transform:['rotate(0deg', 'rotate(360deg)']}, 200);
-        debugger;
+        let spin = [
+            // {transform:'scale(1) rotate(0)'},
+            // {transform:'scale(2) rotate(360deg'},
+            // {transform:'scale(1) rotate(720deg'},
+        ];
+
+        // linhas[i].animate(spin, 2000)
       }
 	  return true;
   }
