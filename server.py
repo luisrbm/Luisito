@@ -1,6 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, make_response
+import random
 
 app = Flask(__name__)
+
+@app.route('/palavra')
+def obter_palavra():
+    with open('comuns.txt') as f:
+    	x = f.readlines()
+    	i = random(0, len(x)-1)
+        return make_response({'palavra': x[i]}, 200)
 
 @app.route('/')
 def luisito():
