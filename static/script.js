@@ -47,7 +47,7 @@ function validarLinha(elemento) {
   if (linha.length == 5){
     if (words.includes(linha.toLowerCase())) {
       const proxLinha = elemento.nextElementSibling.querySelectorAll('input');
-      let x = verificarPalavra(elemento);
+      let x = verificarPalavra(elemento).then(() => {
       if (x !== true){
 		for (let i=0; i < linhas.length; i++) {
         linhas[i].disabled = true;
@@ -55,10 +55,10 @@ function validarLinha(elemento) {
         }
         proxLinha[0].select();
       } else {
-        for (let i=0; i < linhas.length; i++) {
-        linhas[i].disabled = true;
-        }
-      }
+          for (let i=0; i < linhas.length; i++) {
+          linhas[i].disabled = true;
+          }
+      }});
     } else {
       alert('Palavra inválida!');
       }
@@ -66,7 +66,7 @@ function validarLinha(elemento) {
 }
 
 
-function verificarPalavra(elemento) {
+async function verificarPalavra(elemento) {
   const linhas = elemento.querySelectorAll('input');
   let lin_arr = [];
   const daVez_arr = daVez.split('');
@@ -75,7 +75,7 @@ function verificarPalavra(elemento) {
     lin_arr.push(linhas[i].value.toLowerCase());
   }
 
-  elemento.animate([{'opacity': 1}, {'opacity': 0}], 300);
+  await elemento.animate([{'opacity': 1}, {'opacity': 0}], {duration:500, fill: 'forwards'}).finished;
 
   for (let i=0; i < lin_arr.length; i++){
     if (daVez[i] === lin_arr[i]){
@@ -87,17 +87,17 @@ function verificarPalavra(elemento) {
       }
   }
 
-    elemento.animate([{'opacity':0}, {'opacity': 1}], 300);
+    await elemento.animate([{'opacity':0}, {'opacity': 1}],{duration:500, fill: 'forwards'}).finished;
 
 	if (daVez_arr.join('') == lin_arr.join('')) {
       for (let i in linhas){
         let spin = [
-            // {transform:'scale(1) rotate(0)'},
-            // {transform:'scale(2) rotate(360deg'},
-            // {transform:'scale(1) rotate(720deg'},
+            {transform:'scale(1) rotate(0)'},
+            {transform:'scale(2) rotate(360deg'},
+            {transform:'scale(1) rotate(720deg)'},
         ];
 
-        // linhas[i].animate(spin, 2000)
+        linhas[i].animate(spin, 1000)
       }
 	  return true;
   }

@@ -30,7 +30,7 @@
   text-align: center;
   border: 2px solid #2980b9;
   caret-color: transparent;
-  background-color: #20DD20;
+  background-color: #40DD10;
  }
  
  .letra_lugar_errado {
@@ -46,7 +46,7 @@
   text-align: center;
   border: 2px solid #2980b9;
   caret-color: transparent;
-  background-color: #999920;
+  background-color: #CCCC20;
  }
 
 .letra_errada {
@@ -62,7 +62,7 @@
   text-align: center;
   border: 2px solid #2980b9;
   caret-color: transparent;
-  background-color: #999999;
+  background-color: #BBBBBB;
 }
 
 .formContainer {
