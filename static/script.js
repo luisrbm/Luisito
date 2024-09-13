@@ -1,6 +1,24 @@
-const words = ['balao', 'carne', 'junto', 'xinga', 'pombo', 'trico', 'doula', 'minha', 'verao'];
-const daVez = words[Math.floor(Math.random()*words.length)];
-console.log(daVez)
+//var words = ['balao', 'carne', 'junto', 'xinga', 'pombo', 'trico', 'doula', 'minha', 'verao'];
+//const daVez = words[Math.floor(Math.random()*words.length)];
+const url_1 = 'https://lrbm.pythonanywhere.com/palavra'
+const url_2 = 'https://lrbm.pythonanywhere.com/lista'
+const daVez = obter_palavra();
+const words = lista_palavras();
+console.log(daVez);
+
+async function obter_palavra(){
+    const resposta = await fetch(url_1);
+    console.log(resposta);
+    const palavra = await resposta.json();
+    console.log(palavra);
+    return palavra['palavra'];
+}
+
+async function lista_palavras(){
+    const lista_resp = await fetch(url_2);
+    console.log(lista_resp);
+    return lista_resp;
+}
 
 function iniciar() {
   document.getElementById('jogos');
