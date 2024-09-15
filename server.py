@@ -1,12 +1,26 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, jsonify
+from flask_cors import CORS
 import random
+import os
+
+#doc_path = os.getcwd() + '/luisito/comuns.txt' #Se linux
+doc_path = os.getcwd() + '/comuns.txt' #Se windows
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": ("https://lrbm.pythonanywhere.com", 'http://127.0.0.1:5000', 'http://localhost:5000')}})
+
+
+@app.route('/lista')
+def obter_lista():
+    with open(doc_path, 'r', encoding='utf-8') as f:
+        palavras = f.readlines()
+        lista_palavras = [i.strip() for i in palavras]
+    return jsonify({'lista': lista_palavras})
 
 @app.route('/palavra')
 def obter_palavra():
-    with open('comuns.txt') as f:
-    	palavras = f.readlines()
+    with open(doc_path, 'r', encoding='utf-8') as f:
+        palavras = f.readlines()
     if not palavras:
         return jsonify({'erro': 'Nenhuma palavra encontrada'})
 

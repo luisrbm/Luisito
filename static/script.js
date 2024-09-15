@@ -1,8 +1,33 @@
-const words = ['balao', 'carne', 'junto', 'xinga', 'pombo', 'trico', 'doula', 'minha', 'verao'];
-const daVez = words[Math.floor(Math.random()*words.length)];
-console.log(daVez)
+//var words = ['balao', 'carne', 'junto', 'xinga', 'pombo', 'trico', 'doula', 'minha', 'verao'];
+//const daVez = words[Math.floor(Math.random()*words.length)];
+// const url_1 = 'https://lrbm.pythonanywhere.com/palavra' //se online
+const url_1 = 'http://127.0.0.1:5000/palavra'; //se servidor for offline
+// const url_2 = 'https://lrbm.pythonanywhere.com/lista' //se online
+const url_2 = 'http://127.0.0.1:5000/lista'; //se servidor for offline
+let daVez = '';
+let words = [];
+
+async function obter_palavra(){
+    const resposta = await fetch(url_1);
+    // console.log(resposta);
+    const palavra = await resposta.json();
+    // console.log(palavra);
+    return palavra['palavra'];
+}
+
+async function lista_palavras(){
+    const lista_resp = await fetch(url_2);
+    // console.log(lista_resp);
+    const lista = await lista_resp.json();
+    // console.log(lista);
+    return lista;
+}
 
 function iniciar() {
+  obter_palavra().then(value => {daVez = value;});
+  // console.log(daVez);
+  lista_palavras().then(value => {words = value;});
+  // console.log(words.lista);
   document.getElementById('jogos');
   const forms = [];
   var active = 0;
@@ -45,15 +70,21 @@ function validarLinha(elemento) {
     linha += linhas[i].value;
   }
   if (linha.length == 5){
-    if (words.includes(linha.toLowerCase())) {
-      const proxLinha = elemento.nextElementSibling.querySelectorAll('input');
+    if ((words.lista).includes(linha.toLowerCase())) {
+      const proxLinhas = elemento.nextElementSibling;
+      if (proxLinhas !== null) {
+        var proxLinha = proxLinhas.querySelectorAll('input')
+      }
       let x = verificarPalavra(elemento).then(() => {
-      if (x !== true){
+      if (x !== true && proxLinhas !== null){
 		for (let i=0; i < linhas.length; i++) {
         linhas[i].disabled = true;
         proxLinha[i].disabled = false;
         }
         proxLinha[0].select();
+      } else if (x !== true && !proxLinha) {
+        for (let i=0; i < linhas.length; i++) {
+          linhas[i].disabled = true;}
       } else {
           for (let i=0; i < linhas.length; i++) {
           linhas[i].disabled = true;
