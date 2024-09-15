@@ -73,12 +73,10 @@ function validarLinha(elemento) {
     if ((words.lista).includes(linha.toLowerCase())) {
       const proxLinhas = elemento.nextElementSibling;
       if (proxLinhas !== null) {
-        const proxLinha = elemento.nextElementSibling.querySelectorAll('input');
-      } else {
-        const proxLinha = null;
+        var proxLinha = proxLinhas.querySelectorAll('input')
       }
       let x = verificarPalavra(elemento).then(() => {
-      if (x !== true && proxLinha !== null){
+      if (x !== true && proxLinhas !== null){
 		for (let i=0; i < linhas.length; i++) {
         linhas[i].disabled = true;
         proxLinha[i].disabled = false;
