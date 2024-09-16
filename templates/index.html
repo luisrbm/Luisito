@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <title>Luisito</title>
+    <title>Mardito</title>
     <meta lang='pt-br'>
   </head>
   <link rel='stylesheet' href='../static/style.css'>
@@ -25,11 +25,13 @@
     <div>
       <button onclick=limpar()>Limpar</button>
     </div>
-    <div class="campoGrande" id="campogde">
-      <div contenteditable="true" class='campo' id="campo1" style="width:40px; height:40px; position:relative">A
-      </div>
-      <div contenteditable="true" class='campo' id="campo2" style="width:40px; height:40px; position:relative">B
-      </div>
+
+    <div class="popup" id="popup" class="flex_center">
+      <h3>Não encontramos a palavra</h3>
+      <h2 class='formContainer' id='palavra_ausente'></h2>
+      <h3>no nosso banco de dados. Tem certeza que /n a palavra existe? Para inseri-la, verifique a palavra, preste atenção na acentuação, e clique em inserir se tiver certeza que a palavra está escrita corretamente.</h3>
+      <button onclick="showPopup(palavra, false)">Inserir</button>
+      <button onclick="showPopup(palavra, true)">Mudar palavra</button>
     </div>
   </body>
 

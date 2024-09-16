@@ -1,14 +1,24 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 import random
 import os
 
-#doc_path = os.getcwd() + '/luisito/comuns.txt' #Se linux
-doc_path = os.getcwd() + '/comuns.txt' #Se windows
+doc_path = os.getcwd() + '/luisito/comuns.txt' #Se linux
+#doc_path = os.getcwd() + '/comuns.txt' #Se windows
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ("https://lrbm.pythonanywhere.com", 'http://127.0.0.1:5000', 'http://localhost:5000')}})
 
+@app.route('/inserir_palavra/<palavra>', methods=['PUT'])
+def inserir_palavra(palavra):
+    dados = request.json
+    print(dados)
+    if palavra in dados:
+        with open(doc_path, 'r+', encoding='utf-8') as f:
+            palavras = f.readlines()
+            palavras.append(palavra)
+            palavras.sorted()
+            f.writelines(palavras)
 
 @app.route('/lista')
 def obter_lista():

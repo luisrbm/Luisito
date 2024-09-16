@@ -1,11 +1,30 @@
 //var words = ['balao', 'carne', 'junto', 'xinga', 'pombo', 'trico', 'doula', 'minha', 'verao'];
 //const daVez = words[Math.floor(Math.random()*words.length)];
-// const url_1 = 'https://lrbm.pythonanywhere.com/palavra' //se online
-const url_1 = 'http://127.0.0.1:5000/palavra'; //se servidor for offline
-// const url_2 = 'https://lrbm.pythonanywhere.com/lista' //se online
-const url_2 = 'http://127.0.0.1:5000/lista'; //se servidor for offline
+const url_1 = 'https://lrbm.pythonanywhere.com/palavra' //se online
+// const url_1 = 'http://127.0.0.1:5000/palavra'; //se servidor for offline
+const url_2 = 'https://lrbm.pythonanywhere.com/lista' //se online
+// const url_2 = 'http://127.0.0.1:5000/lista'; //se servidor for offline
+const url_3 = 'https://lrbm.pythonanywhere.com/inserir_palavra/' //se online
+// const url_2 = 'http://127.0.0.1:5000/inserir_palavra/'; //se servidor for offline
 let daVez = '';
 let words = [];
+
+
+async function enviar_nova(palavra, bool){
+  if (bool) {
+    document.getElementById('popup').style.visibility = 'visible';
+  } else {
+    document.getElementById('popup').style.visibility = 'hidden';
+  }
+    document.getElementById('palavra_ausente').innerHTML = palavra;
+    await fetch(url_3 + palavra, {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({string: palavra}),
+}).finished;
+}
 
 async function obter_palavra(){
     const resposta = await fetch(url_1);
@@ -91,7 +110,7 @@ function validarLinha(elemento) {
           }
       }});
     } else {
-      alert('Palavra inválida!');
+      enviar_nova(linha.toLowerCase());
       }
     }
 }
